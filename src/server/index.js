@@ -1,15 +1,22 @@
 const express = require('express');
 const cors = require('cors');
 const socket = require('socket.io');
+const path = require('path');
+const fs = require('fs');
 
 const app = express();
+const dataFile = path.join(__dirname, 'data.json');
 
 app.use(cors());
 app.get('/getHistory', (req, res) => {
-	res.json([
-		{ author: 'Alex', text: 'Hello one!', timestamp: '2018-07-25T14:04:48.000Z' },
-		{ author: 'Andrey', text: 'Hi!', timestamp: '2018-07-25T14:05:18.000Z' },
-	]);
+	fs.readFile(dataFile, 'utf8', (err, data) => {
+		if (err) console.error(err);
+
+		// get only last 3 messages.
+		const result = JSON.parse(data).slice(-3);
+
+		res.json(result);
+	});
 });
 
 const server = app.listen(3000, () => {
@@ -22,6 +29,17 @@ io.on('connection', (socket) => {
 	console.log(`Client with id ${socket.id} was connected.`);
 
 	socket.on('message', (message) => {
+		// save message to the data file
+		fs.readFile(dataFile, 'utf8', (err, data) => {
+			if (err) console.error(err);
+
+			const result = JSON.parse(data);
+			result.push(message);
+			fs.writeFile(dataFile, JSON.stringify(result), (err) => {
+				if (err) console.error(err);
+			});
+		});
+
 		io.emit('message', message);
 	});
 
