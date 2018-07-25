@@ -27,19 +27,19 @@ class NewMessageForm extends PureComponent {
 		const { user, sendMessage } = this.props;
 		const { text } = this.state;
 
-		if(text) {
-			const newMessage = {
-				author: user,
-				text: text,
-				timestamp: new Date(),
-			};
+		if(!text) return;
 
-			sendMessage(newMessage);
+		const newMessage = {
+			author: user,
+			text: text,
+			timestamp: new Date(),
+		};
 
-			this.setState({
-				text: '',
-			});
-		}
+		sendMessage(newMessage);
+
+		this.setState({
+			text: '',
+		});
 
 		event.preventDefault();
 	};
