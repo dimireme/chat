@@ -22,11 +22,12 @@ class ChatContainer extends PureComponent {
 	}
 
 	componentWillMount() {
-		this.setState({
-			messages: this.state.messages.concat([
-				{ author: 'Alex', text: 'Hello one!', timestamp: '13:48' },
-				{ author: 'Andrey', text: 'Hi!', timestamp: '13:49' },
-			]),
+		fetch('http://localhost:3000/getHistory')
+		.then(res => res.json())
+		.then(messages => {
+			this.setState({
+				messages: this.state.messages.concat(messages),
+			});
 		});
 	}
 
