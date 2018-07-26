@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body, body > div {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: #ccc;
+}
+
+body > div {
+    display: flex;
+}
+
+.container {
+    width: 250px;
+    height: 445px;
+    margin: auto;
+    background-color: #000;
+}
