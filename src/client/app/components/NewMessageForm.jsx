@@ -1,6 +1,10 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
+import style from "./newMessageForm.css";
+import { Grid, Button, TextField, Icon } from '@material-ui/core';
+import SendIcon from '@material-ui/icons/send';
+
 class NewMessageForm extends PureComponent {
 	static propTypes = {
 		sendMessage: PropTypes.func,
@@ -46,12 +50,24 @@ class NewMessageForm extends PureComponent {
 
 	render() {
 		return (
-			<div>
-				<label>
-					<input type="text" onChange={this.handleChangeText} value={this.state.text} />
-				</label>
-
-				<button type="submit" id="send" onClick={this.handleSendText}>Send</button>
+			<div className={style.form}>
+				<Grid container spacing={8} alignItems="flex-end" wrap="nowrap">
+					<Grid item>
+						<TextField
+							multiline
+							rowsMax="1"
+							placeholder="message"
+							onChange={this.handleChangeText}
+							value={this.state.text}
+							className={style.input}
+						/>
+					</Grid>
+					<Grid item>
+						<Button variant="contained" size="small" onClick={this.handleSendText}>
+							<SendIcon fontSize="inherit" />
+						</Button>
+					</Grid>
+				</Grid>
 			</div>
 		)
 	}

@@ -3,6 +3,8 @@ import React, { PureComponent } from 'react';
 import ChatContainer from './containers/ChatContainer';
 import LoginContainer from './containers/LoginContainer';
 
+import style from './app.css';
+
 export default class App extends PureComponent {
 	constructor(props) {
 		super(props);
@@ -24,7 +26,7 @@ export default class App extends PureComponent {
 		const { user } = this.state;
 
 		return (
-			<div>
+			<div className={style.container}>
 				{ user ? <ChatContainer user={user}/> : <LoginContainer setUser={this.setUser}/> }
 			</div>
 		);
