@@ -1,6 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
+import style from "./loginContainer.css";
+import { TextField, Button, Card, CardContent, CardActions } from '@material-ui/core';
+
 class LoginContainer extends PureComponent {
 	static propTypes = {
 		setUser: PropTypes.func,
@@ -33,15 +36,35 @@ class LoginContainer extends PureComponent {
 	render() {
 		return (
 			<div>
-				<label>
-					<input type="text" onChange={this.handleChangeProperty('userName')} value={this.state.userName} />
-				</label>
+				<Card className={style.card}>
+					<CardContent>
+						<TextField
+							id="login"
+							label="USERNAME"
+							placeholder="name@app.ru"
+							margin="normal"
+							onChange={this.handleChangeProperty('userName')}
+							value={this.state.userName}
+						/>
 
-				<label>
-					<input type="password" onChange={this.handleChangeProperty('password')} value={this.state.password} />
-				</label>
+						<TextField
+							id="password"
+							label="PASSWORD"
+							type="password"
+							placeholder="password"
+							margin="normal"
+							onChange={this.handleChangeProperty('password')}
+							value={this.state.password}
+						/>
+					</CardContent>
 
-				<button type="submit" id="send" onClick={this.handleSetUser}>Send</button>
+					<CardActions disableActionSpacing>
+						<Button fullWidth variant="contained" color="primary" onClick={this.handleSetUser}>
+							Get Started
+						</Button>
+					</CardActions>
+
+				</Card>
 			</div>
 		)
 	}

@@ -1,0 +1,12 @@
+.form {
+    padding: 5px;
+    background-color: #000;
+}
+
+.form textarea {
+    color: white;
+}
+
+.input {
+    color: #fff;
+}

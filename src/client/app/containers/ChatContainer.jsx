@@ -2,6 +2,10 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import io from 'socket.io-client';
 
+import style from "./chatContainer.css";
+import { List, AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
+
 import Message from '../components/Message';
 import NewMessageForm from '../components/NewMessageForm';
 
@@ -45,10 +49,17 @@ class ChatContainer extends PureComponent {
 		const { messages } = this.state;
 
 		return (
-			<div>
-				<ul>
+			<div className={style.chat}>
+				<AppBar position="static" color="inherit" className={style.header}>
+					<Toolbar variant="dense">
+						<Typography variant="title" color="inherit">
+							Test task
+						</Typography>
+					</Toolbar>
+				</AppBar>
+				<List disablePadding className={style.list}>
 					{ messages.map((message, i) => <Message message={message} key={i}/>) }
-				</ul>
+				</List>
 				<NewMessageForm user={this.props.user} sendMessage={this.sendMessage}/>
 			</div>
 		)
