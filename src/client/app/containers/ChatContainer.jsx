@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import io from 'socket.io-client';
 
 import style from "./chatContainer.css";
-import { List, AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
+import { List, AppBar, Toolbar, Typography } from '@material-ui/core';
 
 import Message from '../components/Message';
 import NewMessageForm from '../components/NewMessageForm';
+
+const SERVER = 'https://rocky-everglades-95543.herokuapp.com';
 
 class ChatContainer extends PureComponent {
 	static propTypes = {
@@ -21,12 +22,12 @@ class ChatContainer extends PureComponent {
 			messages: [],
 		};
 
-		this.socket = io('http://localhost:3000');
+		this.socket = io(SERVER);
 		this.socket.on('message', this.addMessage);
 	}
 
 	componentWillMount() {
-		fetch('http://localhost:3000/getHistory')
+		fetch(`${SERVER}/getHistory`)
 		.then(res => res.json())
 		.then(messages => {
 			this.setState({
