@@ -1,9 +1,9 @@
-.chatContainer__header--2069L {
+.chatContainer__header--XvR8N {
     background-color: #000 !important;
     color: #fff;
 }
 
-.chatContainer__list--2elkE {
+.chatContainer__list--2DhNP {
     width: 100%;
     position: relative;
     overflow: auto;
@@ -12,24 +12,24 @@
     background-color: dodgerblue;
 }
 
-.Message__item--1sdax {
+.Message__item--1B-w_ {
     padding-left: 5px;
 }
 
-.newMessageForm__form--3TVUc {
+.newMessageForm__form--3D08z {
     padding: 5px;
     background-color: #000;
 }
 
-.newMessageForm__form--3TVUc textarea {
+.newMessageForm__form--3D08z textarea {
     color: white;
 }
 
-.newMessageForm__input--1awO6 {
+.newMessageForm__input--1dPyr {
     color: #fff;
 }
 
-.loginContainer__card--UgdGJ {
+.loginContainer__card--1ANOQ {
     margin: 150px 20px 0;
 }
 
@@ -52,7 +52,7 @@ body > div {
     display: flex;
 }
 
-.app__container--2S1Yz {
+.app__container--3Mr4i {
     width: 250px;
     height: 445px;
     margin: auto;

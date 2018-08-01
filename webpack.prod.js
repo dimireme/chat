@@ -16,7 +16,7 @@ module.exports = merge(common, {
 			// Правило для локальных стилей, тех что прописаны в наших файлах .css
 			{
 				test: /\.css$/,
-				include: path.join(__dirname, 'src', 'client', 'app'),
+				include: path.join(__dirname, 'src', 'app'),
 				use: [
 					// mini-css-extract-plugin собирает стили в один файл, чтобы стили были не инлайновые.
 					// Имя файла задается в конструкторе при объявлении плагина (см. ниже).

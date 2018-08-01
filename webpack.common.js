@@ -3,11 +3,11 @@ const path = require('path');
 module.exports = {
 
 	// Точка входа приложения, по умолчанию принимается ./src/index.js
-	entry: ['babel-polyfill', path.join(__dirname, 'src', 'client', 'app', 'index')],
+	entry: ['babel-polyfill', path.join(__dirname, 'src', 'app', 'index')],
 
 	// Результат сборки
 	output: {
-		path: path.join(__dirname, 'src', 'client', 'public'),
+		path: path.join(__dirname, 'docs'),
 		filename: 'bundle.js'
 	},
 
@@ -29,7 +29,7 @@ module.exports = {
 			// Babel-loader помогает сборщику проекта читать файлы jsx, чтобы потом получить bundle файл.
 			{
 				test: /\.jsx?/,
-				include: path.join(__dirname, 'src', 'client', 'app'),
+				include: path.join(__dirname, 'src', 'app'),
 				use: 'babel-loader'
 			}
 		]

@@ -8,7 +8,8 @@ import { List, AppBar, Toolbar, Typography } from '@material-ui/core';
 import Message from '../components/Message';
 import NewMessageForm from '../components/NewMessageForm';
 
-const SERVER = 'https://rocky-everglades-95543.herokuapp.com';
+// const SERVER = 'https://rocky-everglades-95543.herokuapp.com';
+const SERVER = 'http://localhost:3000';
 
 class ChatContainer extends PureComponent {
 	static propTypes = {
@@ -26,7 +27,7 @@ class ChatContainer extends PureComponent {
 		this.socket.on('message', this.addMessage);
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		fetch(`${SERVER}/getHistory`)
 		.then(res => res.json())
 		.then(messages => {
@@ -50,7 +51,7 @@ class ChatContainer extends PureComponent {
 		const { messages } = this.state;
 
 		return (
-			<div className={style.chat}>
+			<div>
 				<AppBar position="static" color="inherit" className={style.header}>
 					<Toolbar variant="dense">
 						<Typography variant="title" color="inherit">
